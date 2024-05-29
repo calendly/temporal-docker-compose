@@ -227,7 +227,7 @@ services:
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
     networks:
       - temporal-network
-  
+
   temporal-admin-tools:
     <<: *loki-logging
     container_name: temporal-admin-tools
@@ -252,7 +252,7 @@ services:
       - TEMPORAL_ADDRESS=temporal-nginx:7233
     image: temporalio/ui:${TEMPORAL_UI_VERSION}
     ports:
-      - 8080:8080
+      - 8088:8080
     networks:
       - temporal-network
 
@@ -274,7 +274,7 @@ services:
   grafana:
     container_name: grafana
     image: grafana/grafana:7.5.16
-    build: './deployment/grafana'
+    build: "./deployment/grafana"
     environment:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -305,7 +305,7 @@ services:
 
   otel-collector:
     image: otel/opentelemetry-collector:0.47.0
-    command: [ "--config=/etc/otel-collector-config.yaml" ]
+    command: ["--config=/etc/otel-collector-config.yaml"]
     volumes:
       - type: bind
         source: ./deployment/otel/otel-config.yaml

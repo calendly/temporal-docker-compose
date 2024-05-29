@@ -12,9 +12,9 @@ services:
       - plugins.security.disabled=true
     image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
     ulimits:
-#      memlock:
-#        soft: -1 # Set memlock to unlimited (no soft or hard limit)
-#        hard: -1
+      #      memlock:
+      #        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+      #        hard: -1
       nofile:
         soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
         hard: 65536
@@ -83,7 +83,7 @@ services:
     networks:
       - temporal-network
     ports:
-      - 8080:8080
+      - 8088:8080
 networks:
   temporal-network:
     driver: bridge
